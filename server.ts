@@ -6,13 +6,22 @@ import { randomUUID } from 'crypto';
 import { GoogleGenAI, Type } from '@google/genai';
 import admin from 'firebase-admin';
 import { getFirestore } from 'firebase-admin/firestore';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+let serviceAccount;
 const serviceAccountPath = path.join(__dirname, 'firebase-service-account.json');
-const serviceAccount = JSON.parse(readFileSync(serviceAccountPath, 'utf8'));
+
+if (existsSync(serviceAccountPath)) {
+  serviceAccount = JSON.parse(readFileSync(serviceAccountPath, 'utf8'));
+} else if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} else {
+  throw new Error('Firebase service account not found: please provide firebase-service-account.json file or FIREBASE_SERVICE_ACCOUNT environment variable');
+}
 
 // Initialize Firebase Admin
 const firebaseApp = admin.initializeApp({
