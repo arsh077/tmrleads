@@ -5,14 +5,21 @@ import { createServer as createViteServer } from 'vite';
 import { randomUUID } from 'crypto';
 import { GoogleGenAI, Type } from '@google/genai';
 import admin from 'firebase-admin';
-import serviceAccount from './firebase-service-account.json';
+import { getFirestore } from 'firebase-admin/firestore';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const serviceAccountPath = path.join(__dirname, 'firebase-service-account.json');
+const serviceAccount = JSON.parse(readFileSync(serviceAccountPath, 'utf8'));
 
 // Initialize Firebase Admin
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
+const firebaseApp = admin.initializeApp({
+  credential: admin.cert(serviceAccount),
 });
 
-const db = admin.firestore();
+const db = getFirestore(firebaseApp);
 
 const PORT = 3000;
 
