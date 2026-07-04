@@ -1,0 +1,6 @@
+{
+  "name": "Legal Success India Trademark Lead Portal",
+  "description": "An automated leads distribution platform that fairly assigns incoming leads to active employees.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

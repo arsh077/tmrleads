@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: #ffffff;
+  --text: #111111;
+  --primary: #4f46e5;
+  --card: #ffffff;
+  --border: #e5e7eb;
+}
+
+/* Base body transition & styles using the variables system */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark {
+  --background: #0f172a;
+  --text: #f8fafc;
+  --primary: #38bdf8;
+  --card: #1e293b;
+  --border: #334155;
+
+  /* Automatic overrides for standard Tailwind CSS variables in Dark Mode */
+  --color-slate-50: #0f172a;
+  --color-slate-100: #1e293b;
+  --color-slate-200: #334155;
+  --color-slate-300: #475569;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #94a3b8;
+  --color-slate-700: #cbd5e1;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+  
+  --color-indigo-50: #0f172a;
+  --color-indigo-100: #1e293b;
+  --color-indigo-500: #38bdf8;
+  --color-indigo-600: #38bdf8;
+  --color-indigo-700: #0ea5e9;
+  --color-indigo-800: #0369a1;
+  --color-indigo-900: #0c4a6e;
+  --color-indigo-950: #082f49;
+}
+
+.night {
+  --background: #05070d;
+  --text: #cbd5e1;
+  --primary: #a78bfa;
+  --card: #0b1220;
+  --border: #1f2937;
+
+  /* Automatic overrides for standard Tailwind CSS variables in deep space Night Mode */
+  --color-slate-50: #05070d;
+  --color-slate-100: #0b1220;
+  --color-slate-200: #1f2937;
+  --color-slate-300: #374151;
+  --color-slate-400: #9ca3af;
+  --color-slate-500: #6b7280;
+  --color-slate-600: #9ca3af;
+  --color-slate-700: #cbd5e1;
+  --color-slate-800: #0b1220;
+  --color-slate-900: #05070d;
+  --color-slate-950: #010204;
+  
+  --color-indigo-50: #05070d;
+  --color-indigo-100: #0b1220;
+  --color-indigo-500: #a78bfa;
+  --color-indigo-600: #a78bfa;
+  --color-indigo-700: #8b5cf6;
+  --color-indigo-800: #6d28d9;
+  --color-indigo-900: #5b21b6;
+  --color-indigo-950: #4c1d95;
+}
